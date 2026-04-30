@@ -1,4 +1,4 @@
-import Logo from "../../assets/logo.png";
+import Logo from "assets/logo.png";
 import { IoMdNotifications } from "react-icons/io";
 import { IoIosArrowDown } from "react-icons/io";
 
@@ -15,9 +15,9 @@ export default function Header() {
           </span>
         </div>
 
-        <button className="flex font-montserrat font-semibold items-center text-midblue ml-6 cursor-pointer ">
+        <button className="flex font-montserrat font-semibold items-center text-midblue ml-1 md:ml-6 cursor-pointer ">
           Super Admin
-          <IoIosArrowDown className="ml-2.5 text-midblue" />
+          <IoIosArrowDown className="ml-1 md:ml-2.5 text-midblue" />
         </button>
       </div>
     </header>

@@ -1,10 +1,10 @@
 import "./App.css";
-import Home from "./pages/Home/Home";
+import DashBoard from "pages/DashBoard/DashBoard";
 
 function App() {
   return (
     <>
-      <Home />
+      <DashBoard />
     </>
   );
 }

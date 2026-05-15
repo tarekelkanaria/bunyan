@@ -4,6 +4,8 @@ import Status from "pages/DashBoard/Status/Status";
 import Projects from "pages/DashBoard/Projects/Projects";
 import Users from "pages/DashBoard/Users/Users";
 import { createBrowserRouter, RouterProvider } from "react-router";
+import TableDashBoard from "components/UI/TableDashBoard/TableDashBoard";
+import FormDashboard from "components/UI/FormDashboard/FormDashboard";
 
 const routes = createBrowserRouter([
   {
@@ -17,6 +19,16 @@ const routes = createBrowserRouter([
       {
         path: "/users",
         element: <Users />,
+        children: [
+          {
+            index: true,
+            element: <TableDashBoard />,
+          },
+          {
+            path: "add",
+            element: <FormDashboard />,
+          },
+        ],
       },
       {
         path: "/projects",

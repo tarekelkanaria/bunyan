@@ -15,12 +15,19 @@
   --color-text: #f6f6f6;
   --color-midsky: #6ec1e4;
   --color-azur: #6882a1;
-  --shadow-item: 0 4px 30px 3px rgba(0, 0, 0, 0.25);
+  --shadow-item: 7px 7px 11px -4px #00000040;
+
   --font-montserrat: Montserrat, sans-serif;
   --font-cairo: Cairo, sans-serif;
 }
 @layer components {
   body {
     @apply font-montserrat;
+  }
+  .btn {
+    @apply py-2 px-5 bg-aqua rounded-sm text-white cursor-pointer font-semibold font-montserrat;
+  }
+  .input-field {
+    @apply block border border-azur p-2 indent-1 text-lg focus:outline-0 rounded-md;
   }
 }

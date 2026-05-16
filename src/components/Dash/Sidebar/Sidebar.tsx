@@ -42,21 +42,19 @@ export default function Sidebar({ isDrafting }: { isDrafting: DraftingState }) {
     },
   ];
   return (
-    <aside className="hidden lg:block min-h-screen bg-midblue text-white py-4 lg:w-76">
+    <aside className="hidden lg:block min-h-screen bg-midblue text-white py-4 lg:w-80">
       <h3 className="mb-5 px-4 uppercase font-montserrat font-bold text-sm text-azur tracking-tight">
         Dashboards
       </h3>
       <nav className="px-1">
         {links.map((link, index) => (
           <NavLink to={link.path} key={`${link.title}-${index}`}>
-            <p
-              className={`flex mb-2 py-4 px-1 items-center font-montserrat font-bold text-sm text-white uppercase tracking-tight hover:bg-white/5 transition-colors duration-300 ${isDrafting[link.path.substring(1) as DraftKey] ? "justify-between" : ""}`}
-            >
+            <p className="flex mb-2 py-4 px-1 items-center font-montserrat font-bold text-sm text-white uppercase tracking-tight hover:bg-white/5 transition-colors duration-300">
               {link.Icon}
               {link.title}
 
               {isDrafting[link.path.substring(1) as DraftKey] && (
-                <span className="text-[8px] text-violet-600 p-0.5 bg-aqua rounded-md ml-0.5">
+                <span className="text-[10px] text-violet-600 p-0.5 bg-aqua rounded-md  ml-auto">
                   Drafting...
                 </span>
               )}

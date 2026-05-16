@@ -1,7 +1,13 @@
+import type { DraftingState } from "components/Dash/Sidebar/Sidebar";
 import { useOutletContext } from "react-router";
 
-export default function FormDashboard() {
-  const [isDrafting, setIsDrafting] = useOutletContext();
+export type OutletContextType = [
+  DraftingState,
+  React.Dispatch<React.SetStateAction<DraftingState>>,
+];
+
+export default function FormDashboard({ path }: { path: string }) {
+  const [isDrafting, setIsDrafting] = useOutletContext<OutletContextType>();
   return (
     <form className="px-2">
       <fieldset>
@@ -11,7 +17,8 @@ export default function FormDashboard() {
           name="email"
           id="useremail"
           className="input-field"
-          onChange={() => setIsDrafting(!isDrafting)}
+          onChange={() => setIsDrafting({ ...isDrafting, [path]: true })}
+          onBlur={() => setIsDrafting({ ...isDrafting, [path]: false })}
         />
       </fieldset>
       <fieldset>
@@ -21,7 +28,8 @@ export default function FormDashboard() {
           name="password"
           id="userpass"
           className="input-field"
-          onChange={() => setIsDrafting(!isDrafting)}
+          onChange={() => setIsDrafting({ ...isDrafting, [path]: true })}
+          onBlur={() => setIsDrafting({ ...isDrafting, [path]: false })}
         />
       </fieldset>
       <div className="text-center">

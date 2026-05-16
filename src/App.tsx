@@ -6,6 +6,7 @@ import Users from "pages/DashBoard/Users/Users";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import TableDashBoard from "components/UI/TableDashBoard/TableDashBoard";
 import FormDashboard from "components/UI/FormDashboard/FormDashboard";
+import Developers from "pages/DashBoard/Developers/Developers";
 
 const routes = createBrowserRouter([
   {
@@ -26,13 +27,37 @@ const routes = createBrowserRouter([
           },
           {
             path: "add",
-            element: <FormDashboard />,
+            element: <FormDashboard path="users" />,
           },
         ],
       },
       {
         path: "/projects",
         element: <Projects />,
+        children: [
+          {
+            index: true,
+            element: <TableDashBoard />,
+          },
+          {
+            path: "add",
+            element: <FormDashboard path="projects" />,
+          },
+        ],
+      },
+      {
+        path: "/developers",
+        element: <Developers />,
+        children: [
+          {
+            index: true,
+            element: <TableDashBoard />,
+          },
+          {
+            path: "add",
+            element: <FormDashboard path="developers" />,
+          },
+        ],
       },
     ],
   },

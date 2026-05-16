@@ -7,57 +7,69 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import TableDashBoard from "components/UI/TableDashBoard/TableDashBoard";
 import FormDashboard from "components/UI/FormDashboard/FormDashboard";
 import Developers from "pages/DashBoard/Developers/Developers";
+import Layout from "pages/Layout/Layout";
+import NotFound from "pages/NotFound/NotFound";
 
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <DashBoard />,
+    element: <Layout />,
     children: [
       {
-        index: true,
-        element: <Status />,
-      },
-      {
-        path: "/users",
-        element: <Users />,
+        path: "/",
+        element: <DashBoard />,
         children: [
           {
             index: true,
-            element: <TableDashBoard />,
+            element: <Status />,
           },
           {
-            path: "add",
-            element: <FormDashboard path="users" />,
+            path: "/users",
+            element: <Users />,
+            children: [
+              {
+                index: true,
+                element: <TableDashBoard />,
+              },
+              {
+                path: "add",
+                element: <FormDashboard path="users" />,
+              },
+            ],
+          },
+          {
+            path: "/projects",
+            element: <Projects />,
+            children: [
+              {
+                index: true,
+                element: <TableDashBoard />,
+              },
+              {
+                path: "add",
+                element: <FormDashboard path="projects" />,
+              },
+            ],
+          },
+          {
+            path: "/developers",
+            element: <Developers />,
+            children: [
+              {
+                index: true,
+                element: <TableDashBoard />,
+              },
+              {
+                path: "add",
+                element: <FormDashboard path="developers" />,
+              },
+            ],
           },
         ],
       },
       {
-        path: "/projects",
-        element: <Projects />,
-        children: [
-          {
-            index: true,
-            element: <TableDashBoard />,
-          },
-          {
-            path: "add",
-            element: <FormDashboard path="projects" />,
-          },
-        ],
-      },
-      {
-        path: "/developers",
-        element: <Developers />,
-        children: [
-          {
-            index: true,
-            element: <TableDashBoard />,
-          },
-          {
-            path: "add",
-            element: <FormDashboard path="developers" />,
-          },
-        ],
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },

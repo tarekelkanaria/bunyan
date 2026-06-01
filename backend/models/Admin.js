@@ -23,7 +23,7 @@ const adminSchema = new mongoose.Schema(
 // Hooks
 adminSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
-  const saltRounds = bcrypt.genSalt(process.env.SALT_ROUNDS);
+  const saltRounds = await bcrypt.genSalt(Number(process.env.SALT_ROUNDS));
   this.password = await bcrypt.hash(this.password, saltRounds);
 });
 

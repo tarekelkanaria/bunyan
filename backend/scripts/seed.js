@@ -20,9 +20,9 @@ const addSuperAdmin = async () => {
 
     // Create new admin
     const superAdmin = {
-      username: "super admin",
-      email: process.env.ADMIN_EMAIL,
-      password: "admin123",
+      username: process.env.SUPER_ADMIN_NAME,
+      email: process.env.SUPER_ADMIN_EMAIL,
+      password: process.env.SUPER_ADMIN_PASS,
     };
     const admin = await Admin.create(superAdmin);
     console.log(admin);

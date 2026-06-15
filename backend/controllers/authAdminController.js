@@ -17,7 +17,8 @@ const loginAdmin = async (req, res) => {
     }
     // check admin account in DB
     const { email, password } = value;
-    const admin = Admin.findOne({ email });
+
+    const admin = await Admin.findOne({ email });
     if (!admin) return res.status(403).json({ msg: "Invalid email" });
 
     // Compare password
@@ -25,9 +26,13 @@ const loginAdmin = async (req, res) => {
     if (!matchedPassword)
       return res.status(403).json({ msg: "Invalid email or password" });
     // Crate token
-    const token = await jwt.sign({ id: admin._id }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
-    });
+    const token = await jwt.sign(
+      { id: admin._id, role: "admin" },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1d",
+      },
+    );
     // Response
     res.status(200).json({
       msg: "Success login",
